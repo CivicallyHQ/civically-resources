@@ -1,0 +1,16 @@
+en:
+  js:
+    resource:
+      title:
+        start: "How to handle"
+        before_location: "in"
+      add: "Add"
+      articles:
+        title: "Articles"
+      services:
+        title: "Services"
+      discussions:
+        title: "Discussions"
+        coming_soon: "If you have a story about a legal issue <a href='/start#story'>tell us</a> to get access to discussions."
+      events:
+        title: "Events"

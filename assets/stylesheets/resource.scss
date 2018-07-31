@@ -1,0 +1,52 @@
+.resource {
+  background-color: $secondary;
+  border: 1px solid $primary-low;
+  border-radius: 4px;
+  padding: 10px 20px 20px 20px;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 40px;
+    margin-bottom: 0;
+  }
+
+  h2 a {
+    font-weight: 400;
+  }
+
+  .wrapper {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+  }
+
+  .list {
+    border: 1px solid $primary-low;
+    height: 300px;
+    width: 100%;
+    flex: 1;
+  }
+
+  .container {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .articles {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .services {
+    width: 300px;
+  }
+
+  .discussion {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .events {
+    width: 300px;
+  }
+}
