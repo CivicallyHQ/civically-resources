@@ -1,16 +1,38 @@
 en:
   js:
+    filters:
+      content:
+        title: "Content"
     resource:
-      title:
-        start: "How to handle"
-        before_location: "in"
-      add: "Add"
-      articles:
-        title: "Articles"
+      title_start: "How to handle"
+      name: "{{tagDisplay}} in {{placeName}}"
+      description: 'The best resources for handling {{resourceName}}, curated by users of <a href="/" class="p-link" target="_blank">Civically</a>.'
+      add:
+        label: "Submit"
+        title: "Submit a resource for handling {{resourceName}}"
+        type: "Resource type"
+        name: "Your name"
+        email: "Your email"
+        input: "Resource url"
+      none: "No {{type}} for handling {{resourceName}} yet."
+      content:
+        title: "Content"
+        label: "Content"
+        add: "Submit content"
+        post: "Share content"
       services:
         title: "Services"
+        label: "Service"
+        add: "Submit a service"
+        post: "Add a service"
       discussions:
         title: "Discussions"
-        coming_soon: "If you have a story about a legal issue <a href='/start#story'>tell us</a> to get access to discussions."
+        label: "Discussion"
+        add: "Submit a discussion"
+        post: "Start a discussion"
+        coming_soon: "If you have a story about a {{resourceName}}, <a href='/start#story' class='p-link'>tell us</a> to get access to discussions."
       events:
         title: "Events"
+        label: "Event"
+        post: "Post an event"
+        add: "Submit an event"

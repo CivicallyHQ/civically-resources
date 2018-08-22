@@ -1,0 +1,10 @@
+en:
+  submission_email:
+    title: "Resource Suggestion"
+    subject_template: "New Resource Suggestion"
+    text_body_template: |
+      place: %{place}
+      type: %{type}
+      name: %{name}
+      email: %{email}
+      url: %{url}

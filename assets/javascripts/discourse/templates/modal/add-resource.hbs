@@ -1,0 +1,45 @@
+{{#d-modal-body rawTitle=(i18n 'resource.add.title' resourceName=model.resourceName) class="add-resource"}}
+  <div class="control-group">
+    <label>{{i18n 'resource.add.name'}}</label>
+    <div class="controls">
+      {{input value=name}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label>{{i18n 'resource.add.email'}}</label>
+    <div class="controls">
+      {{input value=email}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label>{{i18n 'resource.add.type'}}</label><span>*</span>
+    <div class="controls">
+      {{#each typeButtons as |t|}}
+        {{d-button class=t.class action='setType' actionParam=t.name label=t.label}}
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label>{{i18n 'resource.add.input'}}</label><span>*</span>
+    <div class="controls">
+      {{input value=url}}
+    </div>
+  </div>
+{{/d-modal-body}}
+
+<div class="modal-footer">
+  {{d-button action="submit" icon="envelope" label='resource.add.label' disabled=submitDisabled}}
+
+  {{#if sending}}
+    {{loading-spinner size='small'}}
+  {{else}}
+    {{#if resultIcon}}
+      {{d-icon resultIcon}}
+    {{/if}}
+  {{/if}}
+
+  <a {{action 'close'}} class="p-link pull-right">{{i18n 'close'}}</a>
+</div>

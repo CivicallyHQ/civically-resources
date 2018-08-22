@@ -5,6 +5,12 @@
   padding: 10px 20px 20px 20px;
   margin-bottom: 30px;
 
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   h1 {
     font-size: 40px;
     margin-bottom: 0;
@@ -14,17 +20,53 @@
     font-weight: 400;
   }
 
+  .description {
+    width: 70%;
+    margin: 20px 0;
+
+    .p-text {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .right {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      margin-left: 30px;
+
+      .people-image {
+        position: absolute;
+        top: -30px;
+        height: 60px;
+      }
+    }
+  }
+
   .wrapper {
-    margin-top: 20px;
+    margin-top: 15px;
     display: flex;
     width: 100%;
   }
 
   .list {
     border: 1px solid $primary-low;
-    height: 300px;
+    height: 200px;
     width: 100%;
     flex: 1;
+
+    .discourse-tags, .num, .topic-post-badges, .posters {
+      display: none;
+    }
+
+    .posters {
+      text-align: right;
+      padding-right: 15px;
+
+      a {
+        float: initial;
+      }
+    }
   }
 
   .container {
@@ -32,7 +74,7 @@
     flex-flow: column;
   }
 
-  .articles {
+  .content {
     flex: 1;
     margin-right: 20px;
   }
@@ -41,12 +83,43 @@
     width: 300px;
   }
 
-  .discussion {
+  .discussions {
     flex: 1;
     margin-right: 20px;
+
+    .list.guest {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $primary-very-low;
+
+      span {
+        background-color: $secondary;
+        padding: 5px;
+      }
+    }
   }
 
   .events {
     width: 300px;
+  }
+}
+
+.add-resource {
+  .control-group {
+    margin-bottom: 15px;
+
+    input {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: inline-block;
+    }
+
+    label + span {
+      color: $danger;
+      margin-left: 3px;
+    }
   }
 }

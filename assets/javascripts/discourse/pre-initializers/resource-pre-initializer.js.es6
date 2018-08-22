@@ -1,10 +1,10 @@
-import resourceRoute from '../routes/resource';
+import ResourceRoute from '../routes/resource';
 
 export default {
   name: 'resource-pre-initializer',
   initialize(registry, app) {
-    app.ResourceGrandparentRoute = resourceRoute.extend();
-    app.ResourceParentRoute = resourceRoute.extend();
-    app.ResourceChildRoute = resourceRoute.extend();
+    app.ResourceGrandparentRoute = ResourceRoute.extend();
+    app.ResourceParentRoute = ResourceRoute.extend();
+    app.ResourceChildRoute = ResourceRoute.extend();
   }
 };

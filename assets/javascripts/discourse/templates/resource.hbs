@@ -1,61 +1,93 @@
 <div class="resource">
-  <h1>{{title}}</h1>
+  <div class="title">
+    <h1>{{title}}</h1>
+    {{#unless currentUser}}
+      {{d-button action='addResource' icon='envelope' label=addLabel}}
+    {{/unless}}
+  </div>
 
   <div class="place">
-    {{d-icon 'globe'}}
-    {{country-label categoryId}}
+    {{country-label category.id}}
+  </div>
+
+  <div class="description">
+    <div class="p-text small">
+      {{{i18n 'resource.description' resourceName=resourceName}}}
+    </div>
+
+    {{#unless site.mobileView}}
+      <div class="right">
+        {{people-image}}
+      </div>
+    {{/unless}}
   </div>
 
   <div class="wrapper">
-    <div class="articles container">
-      <h2><a href="#articles" class="p-link">
-        {{i18n 'resource.articles.title'}}
-      </a></h2>
+    <div class="content container">
+      <h2>
+        <a href="#content" class="p-link">
+          {{i18n 'resource.content.title'}}
+        </a>
+      </h2>
       <div class="list">
-        {{basic-topic-list
-          hideCategory="true"
-          showPosters="true"
-          topics=articles}}
+        {{resource-topic-list topics=content
+                              type='content'
+                              resourceName=resourceName
+                              addResource='addResource'
+                              postResource='goTo'}}
       </div>
     </div>
 
     <div class="services container">
-      <h2><a href="#services" class="p-link">
-        {{i18n 'resource.services.title'}}
-      </a></h2>
+      <h2>
+        <a href="#services" class="p-link">
+          {{i18n 'resource.services.title'}}
+        </a>
+      </h2>
       <div class="list">
-        {{#each service as |s|}}
-          <div class="service-title">
-            {{d-icon s.icon}}
-            <span>{{s.title}}</span>
-          </div>
-        {{/each}}
+        {{resource-topic-list topics=services
+                              type='services'
+                              resourceName=resourceName
+                              addResource='addResource'
+                              postResource='goTo'}}
       </div>
     </div>
   </div>
 
   <div class="wrapper">
     <div class="discussions container">
-      <h2><a href="#discussions" class="p-link">
-        {{i18n 'resource.discussions.title'}}
-      </a></h2>
-      <div class="list">
-        <span class="coming-soon">
-          {{{I18n 'resource.discussions.coming_soon'}}}
-        </span>
+      <h2>
+        <a href="#discussions" class="p-link">
+          {{i18n 'resource.discussions.title'}}
+        </a>
+      </h2>
+      <div class="{{discussionListClasses}}">
+        {{#if currentUser}}
+          {{resource-topic-list topics=discussions
+                                type='discussions'
+                                resourceName=resourceName
+                                addResource='addResource'
+                                postResource='goTo'}}
+        {{else}}
+          <span class="coming-soon">
+            {{{I18n 'resource.discussions.coming_soon' resourceName=resourceName}}}
+          </span>
+        {{/if}}
       </div>
     </div>
 
     <div class="events container">
-      <h2><a href="#events" class="p-link">
-        {{i18n 'resource.events.title'}}
-      </a></h2>
+      <h2>
+        <a href="#events" class="p-link">
+          {{i18n 'resource.events.title'}}
+        </a>
+      </h2>
       <div class="list">
-        {{#each events as |e|}}
-          <div class="event-title">
-            <span>{{e.title}}</span>
-          </div>
-        {{/each}}
+        {{resource-topic-list topics=events
+                              type='events'
+                              resourceName=resourceName
+                              addResource='addResource'
+                              postResource='goTo'}}
       </div>
     </div>
   </div>

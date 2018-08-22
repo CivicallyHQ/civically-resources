@@ -1,6 +1,6 @@
 import { ajax } from 'discourse/lib/ajax';
 import Category from 'discourse/models/category';
-import { placeLabel } from 'discourse/plugins/civically-place/discourse/lib/place-utilities';
+import TopicList from 'discourse/models/topic-list';
 
 export default Ember.Route.extend({
   beforeModel(transition) {
@@ -27,6 +27,7 @@ export default Ember.Route.extend({
       }
 
       this.setProperties({
+        tags,
         tagData,
         category
       });
@@ -46,22 +47,23 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, model) {
-    const categoryId = this.get('category.id');
-    const tagData = this.get('tagData');
-
     let props = {
-      articles: [],
+      content: [],
       events: [],
       services: [],
-      title: this.buildTitle(tagData, categoryId),
-      categoryId
+      discussions: [],
+      tags: this.get('tags'),
+      tagData: this.get('tagData'),
+      category: this.get('category')
     };
 
-    Object.keys(model).forEach((k) => {
-      if (['articles', 'events', 'services'].indexOf(k) > -1) {
-        props[k] = model[k].topic_list.topics;
-      }
+    console.log(model);
+
+    ['content', 'events', 'services', 'discussions'].forEach((type) => {
+      props[type] = TopicList.topicsFrom(this.store, model[type]);
     });
+
+    console.log(props);
 
     this.controllerFor('resource').setProperties(props);
   },
@@ -88,22 +90,5 @@ export default Ember.Route.extend({
     });
 
     return tagData;
-  },
-
-  buildTitle(tagData, categoryId) {
-    let title = I18n.t('resource.title.start');
-    title += ` ${tagData['subjects']}`;
-    title += ` ${this.pluralizeAction(tagData['actions'])}`;
-    title += ` ${I18n.t('resource.title.before_location')}`;
-    title += ` ${placeLabel(categoryId, { noParents: true })}`;
-    return title;
-  },
-
-  pluralizeAction(word) {
-    if (word === 'compliance') {
-      return word;
-    } else {
-      return word + 's';
-    }
   }
 });
