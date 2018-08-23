@@ -21,7 +21,6 @@
   }
 
   .description {
-    width: 70%;
     margin: 20px 0;
 
     .p-text {
@@ -121,5 +120,14 @@
       color: $danger;
       margin-left: 3px;
     }
+  }
+}
+
+.resource-link {
+  margin-left: 7px;
+  height: 18px;
+
+  i {
+    color: $primary;
   }
 }

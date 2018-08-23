@@ -6,7 +6,9 @@ export default Ember.Route.extend({
   beforeModel(transition) {
     const params = transition.params[transition.targetName];
 
-    if (!params.tags || (!params.category)) {
+    console.log(params.tags, params.category);
+
+    if (!params.tags || !params.category) {
       return this.replaceWith('/');
     } else {
       const category = Category.findBySlug(
@@ -57,13 +59,9 @@ export default Ember.Route.extend({
       category: this.get('category')
     };
 
-    console.log(model);
-
     ['content', 'events', 'services', 'discussions'].forEach((type) => {
       props[type] = TopicList.topicsFrom(this.store, model[type]);
     });
-
-    console.log(props);
 
     this.controllerFor('resource').setProperties(props);
   },
