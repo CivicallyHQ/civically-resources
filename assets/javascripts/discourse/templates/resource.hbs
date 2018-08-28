@@ -24,16 +24,16 @@
     <div class="tags">
       <div class="subject">
         {{d-icon 'book'}}
-        {{tagData.subjects}}
+        <span>{{tagData.subjects}}</span>
       </div>
       <div class="action">
         {{d-icon 'gavel'}}
-        {{tagData.actions}}
+        <span>{{tagData.actions}}</span>
       </div>
       {{#if tagData.parties}}
         <div class="party">
           {{d-icon 'group'}}
-          {{tagData.parties}}
+          <span>{{tagData.parties}}</span>
         </div>
       {{/if}}
     </div>
