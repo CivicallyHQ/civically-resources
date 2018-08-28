@@ -1,13 +1,14 @@
 import { ajax } from 'discourse/lib/ajax';
 import Category from 'discourse/models/category';
 import TopicList from 'discourse/models/topic-list';
+import { placeUrl } from 'discourse/plugins/civically-place/discourse/lib/place-utilities';
 
 export default Ember.Route.extend({
   beforeModel(transition) {
     const params = transition.params[transition.targetName];
 
     if (!params.tags || !params.category) {
-      return this.replaceWith('/');
+      return this.replaceWith(placeUrl(this.currentUser));
     } else {
       const category = Category.findBySlug(
         params.category,
@@ -16,14 +17,14 @@ export default Ember.Route.extend({
       );
 
       if (!category) {
-        return this.replaceWith('/');
+        return this.replaceWith(placeUrl(this.currentUser));
       }
 
       let tags = params.tags.split('/');
       const tagData = this.buildTagData(tags);
 
       if (!tagData['subjects'] || !tagData['actions']) {
-        return this.replaceWith('/');
+        return this.replaceWith(placeUrl(this.currentUser));
       }
 
       this.setProperties({
