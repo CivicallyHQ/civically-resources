@@ -1,0 +1,27 @@
+<div class="resource-title-wrapper">
+  <span class="title">
+    {{topic.title}}
+  </span>
+  {{#if showFeaturedLink}}
+    {{topic-featured-link topic}}
+  {{/if}}
+</div>
+
+<div class="posters">
+  {{#each topic.posters as |poster|}}
+    <a href="{{poster.user.path}}"
+       data-user-card="{{poster.user.username}}"
+       class="{{poster.extraClasses}}">
+      {{avatar poster avatarTemplatePath="user.avatar_template"
+                      usernamePath="user.username"
+                      namePath="user.name"
+                      imageSize="small"}}
+    </a>
+  {{/each}}
+</div>
+
+{{#if topic.can_vote}}
+  <span class="vote">
+    {{i18n 'voting.votes' count=topic.vote_count}}
+  </span>
+{{/if}}

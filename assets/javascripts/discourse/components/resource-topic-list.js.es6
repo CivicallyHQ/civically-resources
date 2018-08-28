@@ -3,6 +3,7 @@ import { default as computed } from 'ember-addons/ember-computed-decorators';
 import { canPostType } from 'discourse/plugins/civically-composer-addons/discourse/lib/topic-type-utilities';
 
 export default BasicTopicList.extend({
+  classNames: 'resource-topic-list',
   skipHeader: true,
   hideCategory: true,
   showPosters: true,

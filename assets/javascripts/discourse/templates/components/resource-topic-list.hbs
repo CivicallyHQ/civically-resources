@@ -1,15 +1,8 @@
 {{#conditional-loading-spinner condition=loading}}
   {{#if topics}}
-    {{topic-list showParticipants=showParticipants
-                 showPosters=showPosters
-                 hideCategory=hideCategory
-                 topics=topics
-                 expandExcerpts=expandExcerpts
-                 bulkSelectEnabled=bulkSelectEnabled
-                 canBulkSelect=canBulkSelect
-                 selected=selected
-                 skipHeader=skipHeader
-                 tagsForUser=tagsForUser}}
+    {{#each topics as |topic|}}
+      {{resource-topic-list-item topic=topic}}
+    {{/each}}
   {{else}}
     {{#unless loadingMore}}
     <div class='alert alert-info'>
