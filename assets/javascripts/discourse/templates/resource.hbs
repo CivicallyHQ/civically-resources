@@ -1,6 +1,6 @@
 <div class="resource">
   <div class="title">
-    <h1>{{title}}</h1>
+    <h1>{{i18n 'resource.title' resourceName=resourceName}}</h1>
     {{#unless currentUser}}
       {{d-button action='addResource' icon='envelope' label=addLabel}}
     {{/unless}}
@@ -20,6 +20,23 @@
         {{people-image}}
       </div>
     {{/unless}}
+
+    <div class="tags">
+      <div class="subject">
+        {{d-icon 'book'}}
+        {{tagData.subjects}}
+      </div>
+      <div class="action">
+        {{d-icon 'gavel'}}
+        {{tagData.actions}}
+      </div>
+      {{#if tagData.parties}}
+        <div class="party">
+          {{d-icon 'group'}}
+          {{tagData.parties}}
+        </div>
+      {{/if}}
+    </div>
   </div>
 
   <div class="wrapper">

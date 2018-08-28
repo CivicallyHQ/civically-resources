@@ -4,9 +4,9 @@ en:
       content:
         title: "Content"
     resource:
-      title_start: "How to handle"
-      name: "{{tagDisplay}} in {{placeName}}"
-      description: 'The best resources for handling {{resourceName}}, curated by users of <a href="/" class="p-link" target="_blank">Civically</a>.'
+      name: "{{subject}} {{action}} in {{place}}"
+      title: "How to handle a {{resourceName}}"
+      description: 'The best resources for handling a {{resourceName}}, curated by users of <a href="/" class="p-link" target="_blank">Civically</a>.'
       add:
         label: "Submit"
         title: "Submit a resource for handling {{resourceName}}"

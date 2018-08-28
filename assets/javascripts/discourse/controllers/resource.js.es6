@@ -25,24 +25,18 @@ export default Ember.Controller.extend({
     return name;
   },
 
-  @computed('tagData')
-  tagDisplay(tagData) {
-    return `${tagData['subjects']} ${this.pluralizeAction(tagData['actions'])}`;
-  },
-
   @computed('category.id')
   placeName(categoryId) {
     return placeLabel(categoryId, { noParents: true });
   },
 
-  @computed('tagDisplay', 'placeName')
-  resourceName(tagDisplay, placeName) {
-    return I18n.t('resource.name', { tagDisplay, placeName });
-  },
-
-  @computed('resourceName')
-  title(resourceName) {
-    return I18n.t('resource.title_start') + ` ${resourceName}`;
+  @computed('tagData.subjects', 'tagData.actions', 'placeName')
+  resourceName(subject, action, place) {
+    return I18n.t('resource.name', {
+      subject,
+      action,
+      place
+    });
   },
 
   pluralizeAction(word) {

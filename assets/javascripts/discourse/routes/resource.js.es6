@@ -6,8 +6,6 @@ export default Ember.Route.extend({
   beforeModel(transition) {
     const params = transition.params[transition.targetName];
 
-    console.log(params.tags, params.category);
-
     if (!params.tags || !params.category) {
       return this.replaceWith('/');
     } else {

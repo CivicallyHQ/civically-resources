@@ -36,8 +36,17 @@
 
       .people-image {
         position: absolute;
-        top: -30px;
+        top: -15px;
         height: 60px;
+      }
+    }
+
+    .tags {
+      display: flex;
+      margin-top: 7px;
+
+      > div {
+        margin-right: 10px;
       }
     }
   }
