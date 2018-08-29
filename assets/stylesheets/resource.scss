@@ -64,21 +64,14 @@
   .container {
     display: flex;
     flex-flow: column;
-  }
-
-  .content {
     flex: 1;
-    margin-right: 20px;
   }
 
-  .services {
-    width: 300px;
+  .content, .discussions {
+    margin-right: 20px;
   }
 
   .discussions {
-    flex: 1;
-    margin-right: 20px;
-
     .resource-list.guest {
       display: flex;
       align-items: center;
@@ -90,10 +83,6 @@
         padding: 5px;
       }
     }
-  }
-
-  .events {
-    width: 300px;
   }
 }
 
@@ -149,6 +138,11 @@
       .title {
         font-size: 1.3em;
       }
+    }
+
+    .rating-count {
+      line-height: 14px;
+      margin-left: 5px;
     }
   }
 }

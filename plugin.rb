@@ -94,15 +94,18 @@ after_initialize do
       tags = params[:tags].split('/')
 
       query_params = {
-        match_all_tags: true,
         category: category.id,
         tags: tags,
         limit: 4
       }
 
+      content_list = ::TopicQuery.new(
+        Discourse.system_user,
+        query_params.merge(match_all_tags: true)
+      ).list_content
+
       query = ::TopicQuery.new(Discourse.system_user, query_params)
 
-      content_list = query.list_content
       discussions_list = query.list_discussions
       events_list = query.list_agenda
       services_list = query.list_top_ratings

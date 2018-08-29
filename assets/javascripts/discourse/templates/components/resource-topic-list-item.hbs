@@ -22,8 +22,15 @@
   </div>
 {{/if}}
 
-{{#if topic.can_vote}}
+{{#if showVotes}}
   <span class="vote">
     {{i18n 'voting.votes' count=topic.vote_count}}
+  </span>
+{{/if}}
+
+{{#if showRating}}
+  {{star-rating-raw topic.average_rating}}
+  <span class="rating-count">
+    {{topic.rating_count}}
   </span>
 {{/if}}
