@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
 
   @computed
   discussionListClasses() {
-    let classes = 'list';
+    let classes = 'resource-list';
     if (!this.get('currentUser')) classes += ' guest';
     return classes;
   },

@@ -79,7 +79,7 @@
     flex: 1;
     margin-right: 20px;
 
-    .list.guest {
+    .resource-list.guest {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -125,7 +125,7 @@
   }
 }
 
-.resource-topic-list {
+.resource-list {
   border: 1px solid $primary-low;
   border-radius: 4px;
   height: 200px;
