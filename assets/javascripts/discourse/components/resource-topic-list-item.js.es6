@@ -9,10 +9,11 @@ export default Ember.Component.extend({
     if (isLink) return true;
 
     const t = this.get('topic');
-    if (t.subtype === 'content') {
+    const currentUser = this.get('currentUser');
+    if (!currentUser && t.subtype === 'content') {
       window.location.href = t.featured_link;
     } else {
-      DiscourseURL.routeTo(t.url);
+      DiscourseURL.routeTo(t.get('url'));
     };
   }
 });
