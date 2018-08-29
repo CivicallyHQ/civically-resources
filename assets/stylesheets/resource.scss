@@ -138,11 +138,6 @@
     padding: 7px 13px;
     border-bottom: 1px solid $primary-low;
 
-    + div.resource-topic-list-item:last-of-type {
-      border-top: 1px solid $primary-low;
-      border-bottom: none;
-    }
-
     .vote {
       padding: 0 15px;
       font-size: 1.1em;
