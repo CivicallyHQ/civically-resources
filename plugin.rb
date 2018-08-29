@@ -92,6 +92,7 @@ after_initialize do
       tags = params[:tags].split('/')
 
       query_params = {
+        match_all_tags: true,
         category: category.id,
         tags: tags,
         limit: 4
