@@ -1,7 +1,7 @@
 {{#conditional-loading-spinner condition=loading}}
   {{#if topics}}
     {{#each topics as |topic|}}
-      {{resource-topic-list-item topic=topic}}
+      {{resource-topic-list-item topic=topic type=type}}
     {{/each}}
   {{else}}
     {{#unless loadingMore}}

@@ -75,8 +75,10 @@ after_initialize do
   require_dependency 'topic_query'
   class ::TopicQuery
     def list_content
-      create_list(:content) do |topics|
+      create_list(:content, unordered: true) do |topics|
         topics.where(subtype: 'content')
+          .joins("left join topic_custom_fields tfv ON tfv.topic_id = topics.id AND tfv.name = 'vote_count'")
+          .order("coalesce(tfv.value,'0')::integer desc, topics.bumped_at desc")
       end
     end
     def list_discussions
@@ -103,7 +105,7 @@ after_initialize do
       content_list = query.list_content
       discussions_list = query.list_discussions
       events_list = query.list_agenda
-      services_list = query.list_ratings
+      services_list = query.list_top_ratings
 
       render_json_dump(
         content: TopicListSerializer.new(content_list, scope: guardian),
