@@ -119,10 +119,9 @@ after_initialize do
         query_params.merge(match_all_tags: true)
       ).list_content
 
-      services_list = query.list_top_ratings
-
       query = ::TopicQuery.new(Discourse.system_user, query_params)
 
+      services_list = query.list_top_ratings
       discussions_list = query.list_discussions
       events_list = query.list_agenda
 
