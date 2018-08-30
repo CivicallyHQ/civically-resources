@@ -2,6 +2,7 @@ import { ajax } from 'discourse/lib/ajax';
 import Category from 'discourse/models/category';
 import TopicList from 'discourse/models/topic-list';
 import { placeUrl } from 'discourse/plugins/civically-place/discourse/lib/place-utilities';
+import { buildTagData } from '../lib/resource-utilities';
 
 export default Ember.Route.extend({
   beforeModel(transition) {
@@ -21,7 +22,7 @@ export default Ember.Route.extend({
       }
 
       let tags = params.tags.split('/');
-      const tagData = this.buildTagData(tags);
+      const tagData = buildTagData(tags);
 
       if (!tagData['subjects'] || !tagData['actions']) {
         return this.replaceWith(placeUrl(this.currentUser));
@@ -63,29 +64,5 @@ export default Ember.Route.extend({
     });
 
     this.controllerFor('resource').setProperties(props);
-  },
-
-  buildTagData(tags) {
-    const civicallyTags = this.get('site.civically_tags');
-
-    let tagData = {
-      subjects: '',
-      actions: '',
-      parties: ''
-    };
-
-    tags.forEach((tag) => {
-      let group = '';
-
-      Object.keys(civicallyTags).forEach((g) => {
-        if (civicallyTags[g].indexOf(tag) > -1) {
-          group = g;
-        }
-      });
-
-      tagData[group] = tag;
-    });
-
-    return tagData;
   }
 });

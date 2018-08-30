@@ -72,6 +72,21 @@ after_initialize do
     end
   end
 
+  TopicQuery.add_custom_filter(:match_x_tags) do |topics, query|
+    if query.options[:match_x_tags].to_i > 0
+      tag_ids = ::Tag.where(name: query.options[:tags]).pluck(:id)
+      topics =
+      topics.where("topics.id IN (
+          SELECT topic_tags.topic_id FROM topic_tags
+          WHERE topic_tags.tag_id IN (#{tag_ids.join(',')})
+          GROUP BY topic_tags.topic_id
+          HAVING COUNT(1) >= #{query.options[:match_x_tags]}
+        )")
+    else
+      topics
+    end
+  end
+
   require_dependency 'topic_query'
   class ::TopicQuery
     def list_content
@@ -104,11 +119,12 @@ after_initialize do
         query_params.merge(match_all_tags: true)
       ).list_content
 
+      services_list = query.list_top_ratings
+
       query = ::TopicQuery.new(Discourse.system_user, query_params)
 
       discussions_list = query.list_discussions
       events_list = query.list_agenda
-      services_list = query.list_top_ratings
 
       render_json_dump(
         content: TopicListSerializer.new(content_list, scope: guardian),

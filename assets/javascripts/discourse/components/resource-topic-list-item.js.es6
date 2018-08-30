@@ -2,7 +2,6 @@ import DiscourseURL from 'discourse/lib/url';
 
 export default Ember.Component.extend({
   classNames: 'resource-topic-list-item',
-  showFeaturedLink: Ember.computed.equal('type', 'content'),
   showPosters: Ember.computed.equal('type', 'discussions'),
   showRating: Ember.computed.equal('type', 'services'),
   showVotes: Ember.computed.equal('type', 'content'),
@@ -13,7 +12,7 @@ export default Ember.Component.extend({
 
     const t = this.get('topic');
     const currentUser = this.get('currentUser');
-    if (!currentUser && t.subtype === 'content') {
+    if (!currentUser && t.featured_link) {
       window.location.href = t.featured_link;
     } else {
       DiscourseURL.routeTo(t.get('url'));
