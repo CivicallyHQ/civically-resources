@@ -1,0 +1,38 @@
+fr:
+  js:
+    filters:
+      content:
+        title: "Contenu"
+    resource:
+      name: "{{sujet}} {{action}} à {{lieu}}"
+      title: "Comment gérer un {{resourceName}}"
+      description: 'Les meilleures ressources pour gérer un {{resourceName}}, organisées par les utilisateurs de<a href="/" class="p-link" target="_blank"> Civically</a>.'
+      add:
+        label: "Soumettre"
+        title: "Soumettre une ressource pour gérer {{resourceName}}"
+        type: "Type de ressource"
+        name: "Votre nom"
+        email: "Votre email"
+        input: "URL de la ressource"
+      none: "Pas encore de {{type}} pour gérer {{resourceName}}."
+      content:
+        title: "Contenu"
+        label: "Contenu"
+        add: "Soumettre le contenu"
+        post: "Partager le contenu"
+      services:
+        title: "Prestations de service"
+        label: "Service"
+        add: "Soumettre un service"
+        post: "Ajouter un service"
+      discussions:
+        title: "Discussions"
+        label: "Discussion"
+        add: "Soumettre une discussion"
+        post: "Lancer une discussion"
+        coming_soon: "Si vous avez un article sur un {{resourceName}}, <a href='/start#story' class='p-link'>dites-nous</a> d'accéder aux discussions."
+      events:
+        title: "Événements"
+        label: "Événement "
+        post: "Publier un événement"
+        add: "Soumettre un événement"

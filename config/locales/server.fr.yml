@@ -1,0 +1,10 @@
+fr:
+  submission_email:
+    title: "Suggestion de ressources"
+    subject_template: "Nouvelle suggestion de ressources"
+    text_body_template: |
+      endroit: %{place}
+      type: %{type}
+      prénom: %{name}
+      email: %{email}
+      URL: %{url}
